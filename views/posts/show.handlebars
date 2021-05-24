@@ -1,0 +1,106 @@
+{{>_header}}
+	   
+	   
+	 
+  
+  <div class="main-wrapper">
+	     
+	    <article class="blog-post px-3 py-5 p-md-5">
+		    <div class="container">
+			    <header class="blog-post-header">
+				    <h5 class="titl mb-2" id="postTitle">{{post.title}}</h5>
+				    <div class="meta mb-3"><span class="date">Published {{formatNow post.date}}</span><span class="read-time"></span><span class="comment"><a href="/post/{{post.slug}}">{{post.comments.length}} comments</a></span></div>
+			    </header>
+			    <div class="blog-post-body" >
+				   
+				    <p>{{{post.detail}}} </p>
+				     
+				     </div>
+					<!-- AddToAny BEGIN -->
+<div class="container d-flex justify-content-center mt-4">					
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+	<p class="text-center">Share this post</p>
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_email"></a>
+<a class="a2a_button_whatsapp"></a>
+<a class="a2a_button_linkedin"></a>
+<a class="a2a_button_pinterest"></a>
+<a class="a2a_button_telegram"></a>
+</div>
+</div>
+<!-- AddToAny END -->
+					  <!--recent posts-->
+					
+				   <section class="blog-list px-3 py-5 p-md-5">
+					   {{#if recents}}
+					    <h3 class="text-center mb-4 divide" id="">Recent Posts</h3>
+		                    {{/if}}
+			    <div class="container">
+				 {{#each recents}}
+			    <div class="item mb-5">
+				    <div class="media">
+					    <a href="/post/{{slug}}"><img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="/images/c4.png" alt="image"></a>
+					    <div class="media-body">
+						    <h5 class="title mb-1" id="postTitle"><a href="/post/{{slug}}">{{title}}</a></h5>
+						    <div class="meta mb-1"><span class="date">Published {{formatNow date}}</span><span class="time">{{views}} views</span><span class="comment"><a href="/post/{{slug}}">{{comments.length}} comments</a></span></div>
+						    <div class="intro">{{{truncate detail 100}}}</div>
+						    <a class="more-link" href="/post/{{slug}}">Read more &rarr;</a>
+					    </div><!--//media-body-->
+				    </div><!--//media-->
+			    </div><!--//item-->
+				{{/each}}
+			   
+			   		
+				  
+			    <nav class="blog-nav nav nav-justified mb-2 mt-0">
+					{{#if startIndex}}
+				  <a class="nav-link-prev nav-item nav-link rounded-left" href="?page={{startIndex}}">Previous <i class="arrow-prev fa fa-long-arrow-left"></i></a>
+				   {{/if}}
+				   {{#if nextIndex}}
+				  <a class="nav-link-next nav-item nav-link rounded-right" href="?page={{nextIndex}}">Next <i class="arrow-next fa fa-long-arrow-right"></i></a>
+			      {{/if}}
+				</nav>
+					</div>	
+					</section>	  
+                    {{#if post.allowComment}}
+				<div class="blog-comments-section mt-5">
+					<h5 class="comment-title">Leave a Reply</h5>
+				   <form action="/comment/post/{{post.slug}}" method="POST">
+				   <div class="form-group">
+				   <textarea name="commentBody" rows="5" class="form-control" placeholder="Your comment..."></textarea>
+				   </div>
+				   <div class="form-group d-flex justify-content-center">
+					   <button class="btn " type="submit" id="commentBtn">Post Comment</button>
+				   </div>
+				   </form>
+				  </div>
+				  {{/if}}
+				  <div class="container text-center my-5">
+					  <a href="http://t.me/bascioffers" class="hitme">Hit me up on telegram <i class="fa fa-telegram" id="hitme"></i></a>
+				  </div>
+                    <div class="container my-5">
+						{{#if post.comments}}
+						<h5 class="mb-4">Recent Comments</h5>
+						{{/if}}
+						 {{#each post.comments}}
+                           <div class="card my-2">
+							<div class="card-header">
+                   <p>Posted <span class="badge badge-success">{{formatNow commentDate}}</span></p>
+							</div>
+							<div class="card-body">
+								<p class="card-text">{{commentBody}}</p>
+							</div>
+						</div>
+						{{/each}}
+						</div>
+					
+          </div><!--//container-->
+	    </article>
+	    
+	   
+	  <!--footer here-->
+      {{>_footer}}
+    </div><!--//main-wrapper-->
+
+  

@@ -1,0 +1,218 @@
+{{>_header2}}
+{{>_msg}}
+ <div class="main-wrapper" id="heado">
+	    <section class="cta-section theme-bg-light py-5">
+		    <div class="container text-center">
+			    <h5 class="heading">Admin Dashboard</h5>
+				{{#if user.superAdmin}}
+			    <p class=""> Hi, You are currently logged in as super admin </p>
+                 {{ else }}
+		  <p class=""> Hi, You are currently logged in as an admin </p>
+
+				 {{/if}}
+			    <ul class="nav d-flex justify-content-center">
+                    <li class="nav-item active">
+					    <a class="nav-link" href="/"><i class="fa fa-home fa-fw mr-2"></i> Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+					    <a class="nav-link" href="/post/new"><i class="fa fa-pencil fa-fw mr-2"></i>Create Post</a>
+					</li>
+					{{#if user.superAdmin}}
+                      <li class="nav-item active">
+					    <a class="nav-link" href="/admin/site"><i class="fa fa-user fa-fw mr-2"></i>Admins</a>
+					</li>
+					{{/if}}
+					<li class="nav-item">
+					    <a class="nav-link" href="/admin/logout"><i class="fa fa-sign-out fa-fw mr-2"></i>Logout</a>
+					</li>
+                </ul>
+			    <form class="signup-form form-inline justify-content-center pt-3" action="/find" method="GET">
+                    <div class="form-group">
+                      
+                        <input type="find" id="semail" name="query" class="form-control mr-md-1 semail" placeholder="Search...">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+		    </div><!--//container-->
+	    </section>
+        <div class="container">
+            {{#if posts}}
+     <h3 class="text-center " id="latestUp">My Posts</h3>
+    
+
+         {{/if}}
+        </div>
+	    <section class="blog-list px-3 py-5 p-md-5">
+		    <div class="container">
+				{{#each posts}}
+			    <div class="item mb-5  border p-2">
+      <p class="d-flex justify-content-end"><span class=""><i class="fa fa-times" id="timesBtn"></i></span><i class="fa fa-bars" id="barsBtn"></i></p>
+
+            	<ul class="navbar-nav flex-column text-right" id="downs">
+					
+				<li class="nav-item">
+			  <a class="nav-link text-danger" href="/delete/{{slug}}">Delete</a>
+			 	</li>
+				
+				 <li class="nav-item">
+			 <a class="nav-link" href="/edit/post/{{slug}}">Edit</a>
+			 	</li>
+            
+			 	</ul>
+
+				    <div class="media">
+
+					   <a href="/post/{{slug}}"><img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="/images/c4.png" alt="default image"></a>
+					    <div class="media-body">
+						    <h5 class="title mb-1" id="postTitle"><a href="/post/{{slug}}">{{title}}</a></h5>
+						    <div class="meta mb-1"><span class="date">Published  {{formatNow date}} </span><span class="time">{{views}} views</span><span class="comment"><a href="/post/{{slug}}">{{comments.length}} comments</a></span></div>
+						    <div class="intro d-none d-lg-block">{{{truncate detail 100}}}</div>
+						    <a class="more-link" href="/post/{{slug}}">Read more &rarr;</a>
+                            <div class="container d-none d-lg-flex justify-content-around">
+            	    <a class="" href="/edit/post/{{slug}}"><i class="fa fa-pencil-square"></i>Edit Post </a>
+					  <a class="text-danger" href="/delete/{{slug}}"><i class="fa fa-trash"></i>Delete </a>
+
+                            </div>
+					    </div><!--//media-body-->
+				    </div><!--//media-->
+			    </div><!--//item-->
+				{{/each}}
+			   
+			    {{#if posts}}
+			   <nav class="blog-nav nav nav-justified my-5">
+					{{#if startIndex}}
+				  <a class="nav-link-prev nav-item nav-link rounded-left" href="?page={{startIndex}}">Previous <i class="arrow-prev fa fa-long-arrow-left"></i></a>
+				   {{/if}}
+				   {{#if nextIndex}}
+				  <a class="nav-link-next nav-item nav-link rounded-right" href="?page={{nextIndex}}">Next<i class="arrow-next fa fa-long-arrow-right"></i></a>
+			      {{/if}}
+				</nav>
+				{{/if}}
+
+                <!--Top posts-->
+                 {{#if tops}}
+                
+                <h3 class="text-center mb-5" id="latestUp"> Most Viewed posts</h3>
+                {{/if}}
+                	{{#each tops}}
+			    <div class="item mb-5  border p-2">
+      <p class="d-flex justify-content-end"><span class=""><i class="fa fa-times" id="timesBtn"></i></span><i class="fa fa-bars" id="barsBtn"></i></p>
+
+
+            	<ul class="navbar-nav flex-column text-right" id="downs">
+					
+				<li class="nav-item">
+			  <a class="nav-link text-danger" href="/delete/{{slug}}">Delete</a>
+			 	</li>
+				
+				 <li class="nav-item">
+			 <a class="nav-link" href="/edit/post/{{slug}}">Edit</a>
+			 	</li>
+            
+			 	</ul>
+
+				    <div class="media">
+                    
+					   <a href="/post/{{slug}}"><img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="/images/c4.png" alt="default image"></a>
+					    <div class="media-body">
+						    <h5 class="title mb-1" id="postTitle"><a href="/post/{{slug}}">{{title}} </a></h5>
+						    <div class="meta mb-1"><span class="date">Published  {{formatNow date}} </span><span class="time">{{views}} views</span><span class="comment"><a href="/post/{{slug}}">{{comments.length}} comments</a></span></div>
+						    <div class="intro d-none d-lg-block">{{{truncate detail 100}}}</div>
+						    <a class="more-link" href="/post/{{slug}}">Read more &rarr;</a>
+                            <div class="container d-none d-lg-flex justify-content-around">
+            	    <a class="" href="/edit/post/{{slug}}"><i class="fa fa-pencil-square"></i>Edit Post </a>
+					  <a class="text-danger" href="/delete/{{slug}}"><i class="fa fa-trash"></i>Delete </a>
+
+                            </div>
+					    </div><!--//media-body-->
+				    </div><!--//media-->
+			    </div><!--//item-->
+				{{/each}}
+                <!--Search-->
+                {{#if finds}}
+                
+                <h3 class="text-center mb-3">Search results for {{query}} found</h3>
+              
+                {{ else }}
+                  {{#if query}}
+          <h3 class="text-center mb-3">No search results for {{query}} found</h3>
+             {{/if}}
+             {{/if}}
+        	{{#each finds}}
+			    <div class="item mb-5  border p-2">
+      <p class="d-flex justify-content-end"><span class=""><i class="fa fa-times" id="timesBtn"></i></span><i class="fa fa-bars" id="barsBtn"></i></p>
+
+
+            	<ul class="navbar-nav flex-column text-right" id="downs">
+					
+				<li class="nav-item">
+			  <a class="nav-link text-danger" href="/delete/{{slug}}">Delete</a>
+			 	</li>
+				
+				 <li class="nav-item">
+			 <a class="nav-link" href="/edit/post/{{slug}}">Edit</a>
+			 	</li>
+            
+			 	</ul>
+
+				    <div class="media">
+
+					   <a href="/post/{{slug}}"><img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="/images/c4.png" alt="default image"></a>
+					    <div class="media-body">
+						    <h5 class="title mb-1" id="postTitle"><a href="/post/{{slug}}">{{title}}</a></h5>
+						    <div class="meta mb-1"><span class="date">Published  {{formatNow date}} </span><span class="time">{{views}} views</span><span class="comment"><a href="/post/{{slug}}">{{comments.length}} comments</a></span></div>
+						    <div class="intro d-none d-lg-block">{{{truncate detail 100}}}</div>
+						    <a class="more-link" href="/post/{{slug}}">Read more &rarr;</a>
+                            <div class="container d-none d-lg-flex justify-content-around">
+            	    <a class="" href="/edit/post/{{slug}}"><i class="fa fa-pencil-square"></i>Edit Post </a>
+					  <a class="text-danger" href="/delete/{{slug}}"><i class="fa fa-trash"></i>Delete </a>
+
+                            </div>
+					    </div><!--//media-body-->
+				    </div><!--//media-->
+			    </div><!--//item-->
+				{{/each}}
+			   
+		    </div>
+	    </section>
+		<!--Latest end-->
+
+		
+	  {{>_footer2}}
+    
+    </div><!--//main-wrapper-->
+
+<script>
+var times = document.querySelectorAll('#timesBtn');
+var bars = document.querySelectorAll('#barsBtn');
+var downs = document.querySelectorAll('#downs');
+	
+
+	for(let i = 0; i<downs.length; i++){
+		downs[i];
+	};
+	
+	for(let i = 0; i<times.length; i++){
+		times[i];
+	};
+
+for (let i = 0; i<bars.length; i++){
+	bars[i].addEventListener('click', ()=>{
+		 downs[i].style.display='block';
+       times[i].style.display='block';
+	   bars[i].style.display='none';
+	})
+};
+
+
+for (let i = 0; i<times.length; i++){
+	times[i].addEventListener('click', ()=>{
+		 downs[i].style.display='none';
+       times[i].style.display='none';
+	   bars[i].style.display='block';
+	})
+};
+
+
+
+</script>

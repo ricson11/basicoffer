@@ -1,0 +1,46 @@
+	
+    {{>_header}}
+    
+    <div class="main-wrapper">
+		<div class="container my-5">
+         {{#if search}}
+     
+		  <h3 class="text-center " id="latestUp">Search results for {{query}}</h3>
+            {{ else }}
+      <h3 class="text-center " id="latestUp">No search results for {{query}} found</h3>
+
+        
+		{{/if}}
+	    <section class="blog-list px-3 py-5 p-md-5">
+		    <div class="container">
+				{{#each search}}
+			    <div class="item mb-5">
+				    <div class="media">
+					   <a href="/post/{{slug}}"><img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="/images/c4.png" alt="default image"></a>
+					    <div class="media-body">
+						    <h5 class="title mb-1" id="postTitle"><a href="/post/{{slug}}">{{title}}</a></h5>
+						    <div class="meta mb-1"><span class="date">Published  {{formatNow date}} </span><span class="time">{{views}} views</span><span class="comment"><a href="/post/{{slug}}">{{comments.length}} comments</a></span></div>
+						    <div class="intro">{{{truncate detail 100}}}</div>
+						    <a class="more-link" href="/post/{{slug}}">Read more &rarr;</a>
+					    </div><!--//media-body-->
+				    </div><!--//media-->
+			    </div><!--//item-->
+				{{/each}}
+			   
+			   
+			  
+			     <nav class="blog-nav nav nav-justified my-5">
+					{{#if startIndex}}
+				  <a class="nav-link-prev nav-item nav-link rounded-left" href="?page={{startIndex}}">Previous <i class="arrow-prev fa fa-long-arrow-left"></i></a>
+				   {{/if}}
+				   {{#if nextIndex}}
+				  <a class="nav-link-next nav-item nav-link rounded-right" href="?page={{nextIndex}}">Next<i class="arrow-next fa fa-long-arrow-right"></i></a>
+			      {{/if}}
+				</nav>
+				
+		    </div>
+	    </section>
+		</div>
+		{{>_footer}}
+        </div>
+

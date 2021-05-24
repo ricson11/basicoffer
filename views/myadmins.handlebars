@@ -1,0 +1,36 @@
+{{>_header2}}
+{{>_msg}}
+<div class="main-wrapper my-5">
+    <h3 class="text-center">Site Admins</h3>
+    <div class="container">
+           {{#each users}}
+       <div class="row text-center my-2 border py-2">
+           
+     <div class="col-sm-3">
+           <p >Name</p>
+           <p class="text-success">{{username}}</p>
+       
+     
+         
+     </div>   
+     <div class="col-sm-3">
+         <p>Admin</p>
+  <p class="text-success">{{isAdmin}}</p>
+     </div> 
+   <div class="col-sm-3">
+       <p>Registered date</p>
+       <p class="text-success">{{formatDate date}}</p>    
+     </div> 
+      <div class="col-sm-3">
+       <span> 
+           <a href="/edit/admin/{{slug}}" class="mr-5"><i class="fa fa-pencil-square" > Edit</i></a>
+            <a href="/delete/user/{{slug}}" class="text-danger"><i class="fa fa-trash"> Delete</i></a>
+      </span>
+     </div> 
+
+       
+       
+        </div> 
+         {{/each}} 
+    </div>
+</div>

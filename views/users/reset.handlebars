@@ -1,0 +1,37 @@
+{{>_header2}}
+{{>_msg}}
+<div class='main-wrapper'>
+<div class="container my-5">
+    <h3 class="text-center my-4">Reset Password</h3>
+    <form class="" action="/reset/{{token}}" method="POST">
+     <div class="form-group">
+         <label>Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Admin Password..." required>
+     </div>
+    
+      <div class="form-group">
+         <label>Confirm Password</label>
+        <input type="password" name="password2" class="form-control" placeholder="Confirm password...">
+     </div>
+     
+      <div class="form-group">
+        <button class="btn btn-success" type="submit">Reset</button>
+     </div>
+    </form>
+</div>
+<!--footer-->
+ <footer class="footer text-center py-2 theme-bg-dark d-md-none">
+			 <h5 class="text-success">Quick Links</h5>
+			<div class="all-con d-lg-flex justify-content-center">
+			<a href="/"><p class="mr-2">Home</p></a>
+			<a href="/about"><p class="mr-2">About</p></a>
+	       <a href="/contact"><p class="mr-2">Contact</p></a>		
+			<a href="/disclaimer"><p class="mr-2">Disclaimer</p></a>
+			<a href="/privacy"><p class="mr-2">Privacy Policy</p></a>
+			</div>
+	  <small class="copyright mb-2">Basicoffer &copy; 2021. All right reserved</small>
+		   
+	    </footer>
+       <!--footer end-->
+</div>
+  

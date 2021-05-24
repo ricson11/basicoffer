@@ -1,0 +1,47 @@
+{{>_header2}}
+{{>_msg}}
+<div class='main-wrapper'>
+<div class="container my-5">
+    <h3 class="text-center">Update Site Admin</h3>
+    {{#if user.isAdmin}}
+ <p class="">Turn off the admin button to remove <span class="text-success" >{{user.username}}</span> from admin list</p>
+
+    {{ else }}
+    <p class="">Turn on the admin button to make <span class="text-success" >{{user.username}}</span> admin</p>
+     {{/if}}
+    <form class="" action="/admin/{{user.slug}}?_method=PUT" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+     
+      <div class="custom-control custom-switch">
+            {{#if user.isAdmin}}
+           <input type="checkbox" name="isAdmin" class="custom-control-input" id="switch1" checked="checked" value="{{user.isAdmin}}"> 
+           <label id="userLabel" class="custom-control-label" for="switch1">Admin Button</label>
+           {{ else }}
+            <input type="checkbox" name="isAdmin" class="custom-control-input" id="switch1" value="{{user.isAdmin}}"> 
+           <label id="userLabel" class="custom-control-label" for="switch1">Admin Button</label>
+           {{/if}}
+       </div><br>
+
+    
+     
+      <div class="form-group">
+        <button class="btn btn-success" type="submit">Update Admin</button>
+     </div>
+    </form>
+</div>
+<!--footer-->
+ <footer class="footer text-center py-2 theme-bg-dark d-md-none">
+			 <h5 class="text-success">Quick Links</h5>
+			<div class="all-con d-lg-flex justify-content-center">
+			<a href="/"><p class="mr-2">Home</p></a>
+			<a href="/about"><p class="mr-2">About</p></a>
+	       <a href="/contact"><p class="mr-2">Contact</p></a>		
+			<a href="/disclaimer"><p class="mr-2">Disclaimer</p></a>
+			<a href="/privacy"><p class="mr-2">Privacy Policy</p></a>
+			</div>
+	  <small class="copyright mb-2">Basicoffer &copy; 2021. All right reserved</small>
+		   
+	    </footer>
+       <!--footer end-->
+</div>
+  

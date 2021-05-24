@@ -1,0 +1,25 @@
+  {{>_header}}
+{{>_msg}}
+  <div class="main-wrapper">
+      <div class="container my-5 ">
+      <h3 class="text-center" id="isAbout">Contact Us !</h3>
+   <p class="text-center">To contact us please use the contact form below. You can also reach us on <a href="http://t.me/bascioffers">telegram</a></p>
+     
+     <form action="/contact" method="POST">
+     <div class="form-group">
+       <label class="text-success"><i class="fa fa-envelope-open"></i> Email</label>
+       <input type="email" name="sender" class="form-control" placeholder="you@example.com" required="required" id="conForm">
+     </div>
+     <div class="form-group">
+       <label class="text-success"><i class="fa fa-pencil-square"></i> Message</label>
+       <textarea name="contactBody" class="form-control" rows="5" placeholder="Type your message here..." id="conForm"></textarea>
+     </div>
+     <div class="form-group">
+       <button class="btn btn-success d-block mx-auto" id="btnCon">Send</button>
+     </div>
+     </form>
+
+  </div>
+  {{>_footer}}
+</div>
+  

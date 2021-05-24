@@ -1,0 +1,33 @@
+{{>_header}}
+{{>_msg}}
+<div class='main-wrapper'>
+<div class="container my-5">
+    <h3 class="text-center my-4">Create Admin Account</h3>
+    <form class="" action="/register" method="POST">
+     <div class="form-group">
+         <label>Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Admin username..." required="required" value="{{username}}">
+     </div>
+      <div class="form-group">
+         <label>Email</label>
+        <input type="email" name="email" class="form-control" placeholder="Admin email..." required="required" value="{{email}}">
+     </div>
+      <div class="form-group">
+         <label>Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Admin password..." required="required">
+     </div>
+      <div class="form-group">
+         <label>Confirm Password</label>
+        <input type="password" name="password2" class="form-control" placeholder="Confirm password" required="required">
+     </div>
+       <div class="custom-control custom-switch">
+           <input type="checkbox" name="isAdmin" class="custom-control-input" id="switch1" > 
+           <label id="userLabel" class="custom-control-label" for="switch1">Turn on admin button to make this user admin</label>
+       </div><br>
+      <div class="form-group">
+        <button class="btn btn-success" type="submit">Register</button>
+     </div>
+    </form>
+</div>
+{{>_footer}}
+</div>

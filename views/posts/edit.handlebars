@@ -1,0 +1,33 @@
+{{>_header2}}
+{{>_msg}}
+
+  <div class="main-wrapper">
+      <div class="container my-5 ">
+      <h5 class=" text-center">Update Post</h5>
+      <form action="/post/{{post.slug}}?_method=PUT" method="POST">
+      <input type="hidden" name="_method" value="PUT">
+       <div class="form-group">
+           <label id="postLabel">Post Title</label>
+           <input type="text" name="title" class="form-control" placeholder="Your post title here" required="required" value="{{post.title}}">
+       </div><br>
+       <div class="custom-control custom-switch">
+            {{#if post.allowComment}}
+           <input type="checkbox" name="allowComment" class="custom-control-input" id="switch1" checked="checked"> 
+           <label id="postLabel" class="custom-control-label" for="switch1">Comment is on</label>
+           {{ else }}
+            <input type="checkbox" name="allowComment" class="custom-control-input" id="switch1"> 
+           <label id="postLabel" class="custom-control-label" for="switch1">Comment is off</label>
+           {{/if}}
+       </div><br>
+         <div class="form-group">
+             <label id="postLabel">Post Body</label>
+             <textarea name="detail" class="form-control" placeholder="Your post body here..." rows="10">{{post.detail}}</textarea>
+         </div>
+         <div class="form-group">
+             <button class="btn btn-success" type="submit" id="subPost">Update Post</button>
+         </div>
+      </form>
+  </div>
+  {{>_footer2}}
+</div>
+  

@@ -1,0 +1,13 @@
+  <footer class="footer text-center py-2 theme-bg-dark">
+			 <h5 class="text-success">Quick Links For Admin Only</h5>
+			<div class="all-con d-lg-flex justify-content-center">
+			<a href="/"><p class="mr-2">Home</p></a>
+			<a href="/post/new"><p class="mr-2">Create Post</p></a>
+	            {{#if user.superAdmin}}
+		   <a href="/admin/register"><p class="mr-2">Register</p></a>		
+			  {{/if}}
+			<a href="/admin/logout"><p class="mr-2">Logout</p></a>
+			</div>
+	  <small class="copyright mb-2">Basicoffer &copy; 2021. All right reserved</small>
+		   
+	    </footer>
