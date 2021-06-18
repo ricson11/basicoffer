@@ -27,9 +27,15 @@
     <script src="/ckeditor/ckeditor.js"></script>
 <script async src="https://static.addtoany.com/menu/page.js"></script>
 
-    <script>
-    CKEDITOR.replace('detail');
-    </script>   
+   
+  <script>
+
+      CKEDITOR.replace('detail', {
+      extraPlugins: 'font, justify, emoji, print';
+      removePlugins: ' image, about';
+      });
+     
+  </script>
     
 </body>
 </html>
